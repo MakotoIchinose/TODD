@@ -1,6 +1,5 @@
 /*
 	By Rama
-	Modified for TODD
 */
     
 #include "VictoryBPLibraryPrivatePCH.h"
@@ -54,19 +53,19 @@
 
 
 //Apex issues, can add iOS here  <3 Rama
-//#if PLATFORM_ANDROID || PLATFORM_IOS
-//#ifdef WITH_APEX
-//#undef WITH_APEX
-//#endif
-//#define WITH_APEX 0
-//#endif //APEX EXCLUSIONS
+#if PLATFORM_ANDROID || PLATFORM_IOS
+#ifdef WITH_APEX
+#undef WITH_APEX
+#endif
+#define WITH_APEX 0
+#endif //APEX EXCLUSIONS
 
 //~~~ PhysX ~~~
-//#include "PhysXIncludes.h"
-//#include "PhysXPublic.h"		//For the ptou conversions
+#include "PhysXIncludes.h"
+#include "PhysXPublic.h"		//For the ptou conversions
 
 //For Scene Locking using Epic's awesome helper macros like SCOPED_SCENE_READ_LOCK
-//#include "Runtime/Engine/Private/PhysicsEngine/PhysXSupport.h"
+#include "Runtime/Engine/Private/PhysicsEngine/PhysXSupport.h"
 //~~~~~~~~~~~
 
 #include "IXRTrackingSystem.h"
@@ -571,7 +570,7 @@ bool UVictoryBPFunctionLibrary::VictoryPhysics_UpdateAngularDamping(UPrimitiveCo
 	
 	return true;
 }
-/*	 
+	 
 bool UVictoryBPFunctionLibrary::VictoryDestructible_DestroyChunk(UDestructibleComponent* DestructibleComp, int32 HitItem)
 {   
 	#if WITH_APEX
@@ -612,7 +611,7 @@ bool UVictoryBPFunctionLibrary::VictoryDestructible_DestroyChunk(UDestructibleCo
 	UE_LOG(LogTemp,Error,TEXT("UVictoryBPFunctionLibrary::VictoryDestructible_DestroyChunk ~ Current Platform does not support APEX"));
 	return false;
 }
-*/
+
 static int32 GetChildBones(const FReferenceSkeleton& ReferenceSkeleton, int32 ParentBoneIndex, TArray<int32> & Children)
 { 
 	Children.Empty();
